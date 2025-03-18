@@ -1,0 +1,7 @@
+Hidden_tube.png
+size:512,256
+filter:Linear,Linear
+pma:true
+Fabric
+bounds:2,2,161,379
+rotate:90
