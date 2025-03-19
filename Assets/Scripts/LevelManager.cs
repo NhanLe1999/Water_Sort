@@ -47,11 +47,17 @@ public class LevelManager : MonoBehaviour
         _camera.orthographicSize = 0.5f * width * Screen.height / Screen.width;
 
         var levelMap = Level.LiquidDataMap;
+
+        int index = 5;
+
         for (var i = 0; i < levelMap.Count; i++)
         {
             var levelColumn = levelMap[i];
             var holder = Instantiate(_holderPrefab, list[i], Quaternion.identity);
             holder.Init(levelColumn);
+            holder.IndexLayerMash = index;
+            holder.SetLayerMask(index);
+            index += 30;
             _holders.Add(holder);
         }
     }

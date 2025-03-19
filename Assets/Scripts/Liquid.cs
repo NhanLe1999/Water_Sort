@@ -10,6 +10,10 @@ public class Liquid : MonoBehaviour
     [SerializeField] private float _unitSize;
     [SerializeField] private Color[] _groupColors = new Color[0];
 
+    public Transform p1;
+    public Transform p2;
+
+
     private float _value;
 
     private bool _isBottomLiquid;
@@ -47,7 +51,7 @@ public class Liquid : MonoBehaviour
             {
                 _bottomRenderer.gameObject.SetActive(true);
 
-                _renderer.transform.localPosition = _renderer.transform.localPosition.WithY(_bottomRendererSize);
+               _renderer.transform.localPosition = _renderer.transform.localPosition.WithY(_bottomRendererSize);
                 _renderer.transform.localScale =
                     _renderer.transform.localScale.WithY(_unitSize * value - _bottomRendererSize);
             }
@@ -65,4 +69,16 @@ public class Liquid : MonoBehaviour
     }
 
     public float Size => Value * _unitSize;
+
+    public void SetOrderLayerMask(int order)
+    {
+        _renderer.sortingOrder = order;
+        _bottomRenderer.sortingOrder = order;
+    }
+    private Quaternion initialRotation;
+    private void Start()
+    {
+        initialRotation = _renderer.transform.rotation;
+    }
+  
 }

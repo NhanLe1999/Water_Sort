@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,15 @@ public class Holder : MonoBehaviour
     [SerializeField] private SpriteRenderer _liquidLine;
     [SerializeField] private AudioSource _audio;
     [SerializeField] private AudioClip _liquidTransferClip;
+
+    [SerializeField] SpriteRenderer sprHole;
+    [SerializeField] SpriteMask _spriteMask;
+    [SerializeField] Transform _contence;
+
+    public Transform pHoleMin;
+    public Transform pHoleMax;
+
+    public int IndexLayerMash = 0;
     
     private readonly List<Liquid> _liquids = new List<Liquid>();
     private Coroutine _moveCoroutine;
@@ -49,18 +59,32 @@ public class Holder : MonoBehaviour
             _isFront = value;
             foreach (var spriteRenderer in GetComponentsInChildren<SpriteRenderer>().Except(new []{_liquidLine}))
             {
-                spriteRenderer.sortingLayerName = value ? "Front" : "Default";
+               // spriteRenderer.sortingLayerName = value ? "Front" : "Default";
             }
         }
     }
 
+    public void SetLayerMask(int layerMask)
+    {
+        sprHole.sortingOrder = layerMask + 1;
+        _spriteMask.frontSortingOrder = layerMask;
+        _spriteMask.backSortingOrder = layerMask - 2;
 
+        int index = 1;
 
+        foreach (var item in Liquids)
+        {
+            item.SetOrderLayerMask(layerMask - 1);
+        }
+    }
 
     public void StartPending()
     {
         if (IsPending)
             throw new InvalidOperationException();
+
+        SetLayerMask(3000);
+
         IsPending = true;
         IsFront = true;
         MoveTo(PendingPoint,speed:5);
@@ -73,6 +97,7 @@ public class Holder : MonoBehaviour
         IsFront = false;
         MoveTo(OriginalPoint,speed:5);
         PlayClipIfCan(_putClip);
+        SetLayerMask(IndexLayerMash);
     }
 
     private IEnumerator MoveNearToHolderForTransfer(Holder holder)
@@ -104,11 +129,47 @@ public class Holder : MonoBehaviour
             StopCoroutine(_moveCoroutine);
     }
 
+    private Vector3 pointConetceCurrent = Vector3.zero;
+    float height = 0;
+    float scaleY = 0;
+
+    private void Start()
+    {
+        height = Vector3.Distance(pHoleMin.transform.position, pHoleMax.transform.position);
+        pointConetceCurrent = _contence.transform.localPosition;
+        scaleY = _contence.localScale.y;
+    }
+
+    private void Update()
+    {
+        _contence.rotation = Quaternion.identity;
+        _liquidLine.transform.rotation = Quaternion.identity;
+
+        Vector3 angles = transform.eulerAngles;
+
+        float Mashcode = Mathf.Cos(angles.z * Mathf.Deg2Rad);
+
+        Debug.Log("hihihi_" + angles.z + "////" + height * (1 - Mashcode));
+
+        _contence.transform.localPosition = pointConetceCurrent + new Vector3(0, height * (1 - Mashcode), 0);
+
+     //  _contence.transform.localScale = new Vector3(_contence.transform.localScale.x, scaleY * Mashcode, _contence.transform.localScale.z);
+    }
+
+    void SetParent(Transform tr)
+    {
+        foreach(var lq in _liquids)
+        {
+            lq.transform.parent = tr;
+        }    
+    }    
+
     public IEnumerator MoveAndTransferLiquid(Holder holder,Action onLiquidTransferComplete=null)
     {
+        float hightHole = Vector2.Distance(pHoleMin.position, pHoleMax.position);
+
         IsPending = false;
         
-        var deliverAbsAngle = 82;
         var deliverTopPosition = holder.transform.TransformPoint(5 * Vector3.up);
 
         
@@ -118,21 +179,39 @@ public class Holder : MonoBehaviour
         }
 
         yield return MoveNearToHolderForTransfer(holder);
+
+      //  SetParent(null);
+
+        var thisLiquid = _liquids.Last();
+
+        var hightLayer = Vector2.Distance(pHoleMin.position, thisLiquid.p2.position);
+        var hightLayer1 = Vector2.Distance(pHoleMin.position, thisLiquid.p1.position);
+
+        float egular = Mathf.Acos(hightLayer / hightHole) * Mathf.Rad2Deg;
         
+        float egular1 = Mathf.Acos(hightLayer1 / hightHole) * Mathf.Rad2Deg;
+
+        var deliverAbsAngle = egular;
+        var deliverAbsAngle1 = egular1;
+
         var isRightSide = holder.transform.position.x > transform.position.x;
         var sidePoint = isRightSide ? _rightSideDeliverPoint : _leftSideDeliverPoint;
-        var deliverAngle = isRightSide ? -deliverAbsAngle : deliverAbsAngle;
 
+        var deliverAngle = isRightSide ? -deliverAbsAngle : deliverAbsAngle;
         var relativePoint = transform.position - sidePoint.position;
         var rotatedRelativePoint = Quaternion.AngleAxis(deliverAngle, Vector3.forward) * relativePoint;
-
         var targetHolderPoint = rotatedRelativePoint + deliverTopPosition;
         var targetHolderRotation = Quaternion.AngleAxis(deliverAngle, Vector3.forward);
+
+
+        var deliverAngle1 = isRightSide ? -deliverAbsAngle1 : deliverAbsAngle1;
+        var rotatedRelativePoint1 = Quaternion.AngleAxis(deliverAngle1, Vector3.forward) * relativePoint;
+        var targetHolderPoint1 = rotatedRelativePoint1 + deliverTopPosition;
+        var targetHolderRotation1 = Quaternion.AngleAxis(deliverAngle1, Vector3.forward);
 
         var startPoint = transform.position;
         var startRotation = transform.rotation;
 
-        var thisLiquid = _liquids.Last();
 
         yield return SimpleCoroutine.MoveTowardsEnumerator(onCallOnFrame: n =>
         {
@@ -140,15 +219,18 @@ public class Holder : MonoBehaviour
             transform.rotation = Quaternion.Lerp(startRotation, targetHolderRotation, n);
         }, speed: 2);
 
+
+        var startRotation1 = transform.rotation;
+        var startPoint1 = transform.position;
+
         var thisLiquidStartValue = thisLiquid.Value;
         var transferValue = Mathf.Min(thisLiquid.Value,holder.MAXValue - holder.CurrentTotal);
-        
+
         
         if (holder.Liquids.LastOrDefault() == null)
         {
             holder.AddLiquid(thisLiquid.GroupId);
         }
-
         var targetLiquid = holder.Liquids.Last();
         var targetLiquidStartValue = targetLiquid.Value;
 
@@ -157,15 +239,28 @@ public class Holder : MonoBehaviour
         _liquidLine.transform.localScale =
             _liquidLine.transform.localScale.WithY(sidePoint.transform.position.y - holder.transform.position.y);
         _liquidLine.color = thisLiquid.Renderer.color;
-        _liquidLine.transform.rotation = Quaternion.identity;
+       // _liquidLine.transform.rotation = Quaternion.identity;
         _audio.clip = _liquidTransferClip;
         _audio.Play();
         _audio.volume = transferValue / 5;
+
+      // SetParent(_contence);
+
         yield return SimpleCoroutine.MoveTowardsEnumerator(onCallOnFrame: n =>
         {
+            transform.position = Vector3.Lerp(startPoint1, targetHolderPoint1, n);
+            transform.rotation = Quaternion.Lerp(startRotation1, targetHolderRotation1, n);
+
             thisLiquid.Value = Mathf.Lerp(thisLiquidStartValue, thisLiquidStartValue - transferValue, n);
             targetLiquid.Value = Mathf.Lerp(targetLiquidStartValue, targetLiquidStartValue + transferValue, n);
         }, speed: 2);
+
+
+        var currentCon = _contence.transform.localPosition;
+
+      //  _contence.DOLocalMoveY(currentCon.y + 2.75f, 0.5f);
+
+      //  yield return StartCoroutine(Setvalue(thisLiquid, targetLiquid, thisLiquidStartValue - transferValue, targetLiquidStartValue + transferValue));
 
         if (thisLiquid.Value <= 0.05f)
         {
@@ -176,21 +271,83 @@ public class Holder : MonoBehaviour
         {
             thisLiquid.Value = Mathf.RoundToInt(thisLiquid.Value);
         }
+
+       // SetParent(_contence);
+
         _audio.Stop();
         _liquidLine.gameObject.SetActive(false);
         targetLiquid.Value = Mathf.RoundToInt(targetLiquid.Value);
         onLiquidTransferComplete?.Invoke();
+      //  SetParent(_contence);
+        // _contence.DOLocalMoveY(currentCon.y, 0.5f);
         yield return SimpleCoroutine.MoveTowardsEnumerator(onCallOnFrame: n =>
         {
+            if(_contence.transform.localPosition.y >= currentCon.y)
+            {
+              //  _contence.transform.localPosition += new Vector3(0, -n, 0);
+            }
+
             transform.position = Vector3.Lerp(targetHolderPoint, startPoint, n);
             transform.rotation = Quaternion.Lerp(targetHolderRotation, startRotation, n);
         }, speed: 2);
 
+        //   _contence.transform.localPosition.WithY(currentCon.y);
         yield return ReturnToOriginalPoint();
         IsFront = false;
-
+        ResetLayerMash();
+        holder.ResetLayerMash();
     }
-    
+
+    IEnumerator Setvalue(Liquid lq1, Liquid lq2, float value1, float value2)
+    {
+        var start1 = lq1.Value;
+        var start2 = lq2.Value;
+
+        while (true)
+        {
+            start1 -= Time.deltaTime;
+            start2 += Time.deltaTime;
+
+         
+            bool isbreak = false;
+            bool isbreak1 = false;
+
+            if (!isbreak)
+            {
+               // _contence.transform.localPosition += new Vector3(0, Time.deltaTime, 0);
+            }
+
+
+            if (start1 <= value1 && !isbreak)
+            {
+                start1 = value1;
+                isbreak = true;
+            }
+
+            if (start2 >= value2 && !isbreak1)
+            {
+                start2 = value2;
+                isbreak1 = true;
+            }
+            lq1.Value = start1;
+            lq2.Value = start2;
+
+
+            if (isbreak && isbreak1)
+            {
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
+    public void ResetLayerMash()
+    {
+        SetLayerMask(IndexLayerMash);
+    }
+
+
 
     public void AddLiquid(int groupId, float value = 0)
     {
