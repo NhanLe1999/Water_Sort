@@ -1,0 +1,41 @@
+
+vicotry_challenge.png
+size: 1460,616
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+crown
+  rotate: false
+  xy: 614, 30
+  size: 321, 250
+  orig: 323, 252
+  offset: 1, 1
+  index: -1
+flag
+  rotate: false
+  xy: 991, 143
+  size: 467, 469
+  orig: 467, 469
+  offset: 0, 0
+  index: -1
+horn 1
+  rotate: false
+  xy: 2, 2
+  size: 304, 278
+  orig: 306, 280
+  offset: 1, 1
+  index: -1
+horn 2
+  rotate: false
+  xy: 308, 2
+  size: 304, 278
+  orig: 306, 280
+  offset: 1, 1
+  index: -1
+ribbon
+  rotate: false
+  xy: 2, 282
+  size: 987, 330
+  orig: 987, 330
+  offset: 0, 0
+  index: -1

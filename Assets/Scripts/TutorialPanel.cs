@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialPanel : ShowHidable
+namespace WaterSort
 {
+    public class TutorialPanel : ShowHidable
+    {
 
+    }
 }

@@ -1,20 +1,23 @@
-﻿
-
-using System;
-using System.Collections;
-using dotmob;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Splash : MonoBehaviour
+namespace WaterSort
 {
-    private IEnumerator Start()
+    public class Splash : MonoBehaviour
     {
-        if (!AdsManager.HaveSetupConsent)
+        private void Start()
         {
-            SharedUIManager.ConsentPanel.Show();
-            yield return new WaitUntil(() => !SharedUIManager.ConsentPanel.Showing);
+            /*
+#if UNITY_ANDROID
+            if (!GameConfig.HaveSetupConsent)
+            {
+                SharedUIManager.ConsentPanel.Show();
+                yield return new WaitUntil(() => !SharedUIManager.ConsentPanel.Showing);
+            }
+#endif
+            yield return new WaitForEndOfFrame();
+            */
+            GameManager.LoadScene("MainMenu");
         }
-
-        GameManager.LoadScene("MainMenu");
     }
 }

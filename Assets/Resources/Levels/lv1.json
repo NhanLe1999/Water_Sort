@@ -1,0 +1,18 @@
+{
+    "no": 1,
+    "maxWaterInTube": 4,
+    "map": [
+        {
+            "values": [
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "values": [
+                0
+            ]
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "11111",
+    "project_id": "asdfasdf",
+    "storage_bucket": "adfasdf"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "asdfasdf",
+        "android_client_info": {
+          "package_name": "com.xxx.water"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "fasf",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "wrwer"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323232323",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

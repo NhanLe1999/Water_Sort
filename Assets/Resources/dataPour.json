@@ -1,0 +1,598 @@
+{
+    "holderDataPours": [
+        {
+            "id": 1,
+            "lineRightPoin": {
+                "x": 0.608,
+                "y": 4.642,
+                "z": 0
+            },
+            "lineLeftPoin": {
+                "x": -0.608,
+                "y": 4.642,
+                "z": 0
+            },
+            "contentPoin": 0.608,
+            "listFour": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.682,
+                        "y": 6.06,
+                        "z": 0
+                    },
+                    "startAngle": 83.3,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.64,
+                        "y": 5.37,
+                        "z": 0
+                    },
+                    "startAngle": 74.8,
+                    "endAngle": 83.3
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.433,
+                        "y": 4.494,
+                        "z": 0
+                    },
+                    "startAngle": 63.8,
+                    "endAngle": 74.8
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.811,
+                        "y": 3.28,
+                        "z": 0
+                    },
+                    "startAngle": 47,
+                    "endAngle": 63.8
+                }
+            ],
+            "listFive": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.78,
+                        "y": 6.2,
+                        "z": 0
+                    },
+                    "startAngle": 85,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.67,
+                        "y": 5.67,
+                        "z": 0
+                    },
+                    "startAngle": 78.5,
+                    "endAngle": 85
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.583,
+                        "y": 5.047,
+                        "z": 0
+                    },
+                    "startAngle": 70.8,
+                    "endAngle": 78.5
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.355,
+                        "y": 5.28,
+                        "z": 0
+                    },
+                    "startAngle": 61,
+                    "endAngle": 70.8
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.811,
+                        "y": 3.28,
+                        "z": 0
+                    },
+                    "startAngle": 47,
+                    "endAngle": 61
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "lineRightPoin": {
+                "x": 0.353,
+                "y": 4.238,
+                "z": 0
+            },
+            "lineLeftPoin": {
+                "x": -0.343,
+                "y": 4.238,
+                "z": 0
+            },
+            "contentPoin": 0.524,
+            "listFour": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.25,
+                        "y": 5.13,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.227,
+                        "y": 4.54,
+                        "z": 0
+                    },
+                    "startAngle": 79,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.084,
+                        "y": 3.81,
+                        "z": 0
+                    },
+                    "startAngle": 69,
+                    "endAngle": 79
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.635,
+                        "y": 2.795,
+                        "z": 0
+                    },
+                    "startAngle": 54,
+                    "endAngle": 69
+                }
+            ],
+            "listFive": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.246,
+                        "y": 5.245,
+                        "z": 0
+                    },
+                    "startAngle": 88.5,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.248,
+                        "y": 4.78,
+                        "z": 0
+                    },
+                    "startAngle": 82.3,
+                    "endAngle": 88.5
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.189,
+                        "y": 4.26,
+                        "z": 0
+                    },
+                    "startAngle": 75.2,
+                    "endAngle": 82.3
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.029,
+                        "y": 3.634,
+                        "z": 0
+                    },
+                    "startAngle": 66.5,
+                    "endAngle": 75.2
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.635,
+                        "y": 2.795,
+                        "z": 0
+                    },
+                    "startAngle": 54,
+                    "endAngle": 66.5
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "lineRightPoin": {
+                "x": 0.2074,
+                "y": 4.2355,
+                "z": 0
+            },
+            "lineLeftPoin": {
+                "x": -0.2068,
+                "y": 4.2355,
+                "z": 0
+            },
+            "contentPoin": 0.59,
+            "listFour": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.24,
+                        "y": 4.985,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.227,
+                        "y": 4.66,
+                        "z": 0
+                    },
+                    "startAngle": 82.6,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.113,
+                        "y": 3.96,
+                        "z": 0
+                    },
+                    "startAngle": 73,
+                    "endAngle": 82.6
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.755,
+                        "y": 3.03,
+                        "z": 0
+                    },
+                    "startAngle": 59.5,
+                    "endAngle": 73
+                }
+            ],
+            "listFive": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.245,
+                        "y": 4.986,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.239,
+                        "y": 4.896,
+                        "z": 0
+                    },
+                    "startAngle": 85.8,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.198,
+                        "y": 4.395,
+                        "z": 0
+                    },
+                    "startAngle": 79,
+                    "endAngle": 85.8
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.065,
+                        "y": 3.795,
+                        "z": 0
+                    },
+                    "startAngle": 70.7,
+                    "endAngle": 79
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.755,
+                        "y": 3.03,
+                        "z": 0
+                    },
+                    "startAngle": 59.5,
+                    "endAngle": 70.7
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "lineRightPoin": {
+                "x": 0.3513,
+                "y": 4.2302,
+                "z": 0
+            },
+            "lineLeftPoin": {
+                "x": -0.3495,
+                "y": 4.2302,
+                "z": 0
+            },
+            "contentPoin": 0.586,
+            "listFour": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.245,
+                        "y": 4.98,
+                        "z": 0
+                    },
+                    "startAngle": 85,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.23,
+                        "y": 4.634,
+                        "z": 0
+                    },
+                    "startAngle": 80.3,
+                    "endAngle": 85
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.1,
+                        "y": 3.905,
+                        "z": 0
+                    },
+                    "startAngle": 70.3,
+                    "endAngle": 80.3
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.703,
+                        "y": 2.925,
+                        "z": 0
+                    },
+                    "startAngle": 56,
+                    "endAngle": 70.3
+                }
+            ],
+            "listFive": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.245,
+                        "y": 5.13,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.245,
+                        "y": 4.885,
+                        "z": 0
+                    },
+                    "startAngle": 83.7,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.2,
+                        "y": 4.378,
+                        "z": 0
+                    },
+                    "startAngle": 76.8,
+                    "endAngle": 83.7
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.055,
+                        "y": 3.74,
+                        "z": 0
+                    },
+                    "startAngle": 68,
+                    "endAngle": 76.8
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.703,
+                        "y": 2.925,
+                        "z": 0
+                    },
+                    "startAngle": 56,
+                    "endAngle": 68
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "lineRightPoin": {
+                "x": 0.2347,
+                "y": 4.2359,
+                "z": 0
+            },
+            "lineLeftPoin": {
+                "x": -0.2413,
+                "y": 4.2359,
+                "z": 0
+            },
+            "contentPoin": 0.6,
+            "listFour": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.245,
+                        "y": 5.011,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.23,
+                        "y": 4.665,
+                        "z": 0
+                    },
+                    "startAngle": 82.3,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.113,
+                        "y": 3.95,
+                        "z": 0
+                    },
+                    "startAngle": 72.5,
+                    "endAngle": 82.3
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.752,
+                        "y": 3.02,
+                        "z": 0
+                    },
+                    "startAngle": 59,
+                    "endAngle": 72.5
+                }
+            ],
+            "listFive": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.245,
+                        "y": 5.013,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.24,
+                        "y": 4.9,
+                        "z": 0
+                    },
+                    "startAngle": 85.5,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.2,
+                        "y": 4.4,
+                        "z": 0
+                    },
+                    "startAngle": 78.7,
+                    "endAngle": 85.5
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.067,
+                        "y": 3.785,
+                        "z": 0
+                    },
+                    "startAngle": 70.2,
+                    "endAngle": 78.7
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.752,
+                        "y": 3.02,
+                        "z": 0
+                    },
+                    "startAngle": 59,
+                    "endAngle": 70.2
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "lineRightPoin": {
+                "x": 0.2189,
+                "y": 4.2241,
+                "z": 0
+            },
+            "lineLeftPoin": {
+                "x": -0.2165,
+                "y": 4.2241,
+                "z": 0
+            },
+            "contentPoin": 0.586,
+            "listFour": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.23,
+                        "y": 4.997,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.215,
+                        "y": 4.665,
+                        "z": 0
+                    },
+                    "startAngle": 82.5,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.1,
+                        "y": 3.959,
+                        "z": 0
+                    },
+                    "startAngle": 72.8,
+                    "endAngle": 82.5
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.735,
+                        "y": 3.013,
+                        "z": 0
+                    },
+                    "startAngle": 59,
+                    "endAngle": 72.8
+                }
+            ],
+            "listFive": [
+                {
+                    "deltaStartPoint": {
+                        "x": 4.23,
+                        "y": 4.997,
+                        "z": 0
+                    },
+                    "startAngle": 87,
+                    "endAngle": 90
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.228,
+                        "y": 4.894,
+                        "z": 0
+                    },
+                    "startAngle": 85.6,
+                    "endAngle": 87
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.185,
+                        "y": 4.395,
+                        "z": 0
+                    },
+                    "startAngle": 78.8,
+                    "endAngle": 85.6
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 4.055,
+                        "y": 3.795,
+                        "z": 0
+                    },
+                    "startAngle": 70.5,
+                    "endAngle": 78.8
+                },
+                {
+                    "deltaStartPoint": {
+                        "x": 3.735,
+                        "y": 3.013,
+                        "z": 0
+                    },
+                    "startAngle": 59,
+                    "endAngle": 70.5
+                }
+            ]
+        }
+    ]
+}

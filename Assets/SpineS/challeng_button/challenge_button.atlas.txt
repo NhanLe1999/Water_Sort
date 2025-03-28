@@ -1,0 +1,20 @@
+
+challenge_button.png
+size: 504,544
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bell
+  rotate: false
+  xy: 2, 100
+  size: 497, 440
+  orig: 497, 440
+  offset: 0, 0
+  index: -1
+red_button
+  rotate: false
+  xy: 2, 2
+  size: 292, 96
+  orig: 292, 96
+  offset: 0, 0
+  index: -1

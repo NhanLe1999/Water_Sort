@@ -1,7 +1,0 @@
-Ribbon.png
-size:484,136
-filter:Linear,Linear
-pma:true
-scale:0.5
-Ribbon
-bounds:2,2,478,130

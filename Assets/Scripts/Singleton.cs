@@ -1,25 +1,27 @@
 ﻿using UnityEngine;
-
-public class Singleton<T> : MonoBehaviour where T:Singleton<T>
+namespace WaterSort
 {
-    public static T Instance { get; private set; }
-
-    protected virtual void Awake()
+    public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
-        if (Instance==null)
-        {
-            Instance = (T) this;
-            DontDestroyOnLoad(gameObject);
-            OnInit();
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+        public static T Instance { get; private set; }
 
-    protected virtual void OnInit()
-    {
+        protected virtual void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = (T)this;
+                DontDestroyOnLoad(gameObject);
+                OnInit();
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
 
+        protected virtual void OnInit()
+        {
+
+        }
     }
 }

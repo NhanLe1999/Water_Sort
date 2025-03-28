@@ -1,12 +1,14 @@
-﻿
-public interface IInitializable
+﻿namespace WaterSort
 {
-    bool Initialized { get; }
-    void Init();
-}
+    public interface IInitializable
+    {
+        bool Initialized { get; }
+        void Init();
+    }
 
-public interface IInitializable<in T>
-{
-    bool Initialized { get; }
-    void Init(T item);
+    public interface IInitializable<in T>
+    {
+        bool Initialized { get; }
+        void Init(T item);
+    }
 }

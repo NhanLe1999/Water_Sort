@@ -1,0 +1,52 @@
+{
+    "MonoBehaviour": {
+        "m_Enabled": true,
+        "m_EditorHideFlags": 0,
+        "m_Name": "",
+        "m_EditorClassIdentifier": "",
+        "ToolbarIndex": 0,
+        "m_iOSNotificationSettingsValues": {
+            "m_Keys": [
+                "UnityNotificationRequestAuthorizationOnAppLaunch",
+                "UnityNotificationDefaultAuthorizationOptions",
+                "UnityAddRemoteNotificationCapability",
+                "UnityNotificationRequestAuthorizationForRemoteNotificationsOnAppLaunch",
+                "UnityRemoteNotificationForegroundPresentationOptions",
+                "UnityUseAPSReleaseEnvironment",
+                "UnityUseLocationNotificationTrigger"
+            ],
+            "m_Values": [
+                "True",
+                "7",
+                "True",
+                "True",
+                "-1",
+                "False",
+                "False"
+            ]
+        },
+        "m_AndroidNotificationSettingsValues": {
+            "m_Keys": [
+                "UnityNotificationAndroidRescheduleOnDeviceRestart",
+                "UnityNotificationAndroidUseCustomActivity",
+                "UnityNotificationAndroidCustomActivityString"
+            ],
+            "m_Values": [
+                "False",
+                "False",
+                "com.unity3d.player.UnityPlayerActivity"
+            ]
+        },
+        "DrawableResources": [
+            {
+                "Id": "banner",
+                "Type": 1,
+                "Asset": {
+                    "fileID": 2800000,
+                    "guid": "c8be89a06694f884189b92d36bf889f4",
+                    "type": 3
+                }
+            }
+        ]
+    }
+}

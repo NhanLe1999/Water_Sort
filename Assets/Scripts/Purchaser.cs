@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+namespace WaterSort
+{
 #if IN_APP
 using UnityEngine.Purchasing;
 
@@ -158,3 +160,4 @@ public class Purchaser : IStoreListener
 
 }
 #endif
+}

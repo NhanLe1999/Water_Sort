@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "196195077718",
+    "project_id": "watersort9",
+    "storage_bucket": "watersort9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196195077718:android:b51db165855aad8b5eb5f7",
+        "android_client_info": {
+          "package_name": "com.watersort.free.puzzle.pourwater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196195077718-dqsss53656tm48an51s0o3rj7dc3t28t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEgmZs2MM_hyqCRRXOGZ7ESlqOqHhvkaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196195077718-dqsss53656tm48an51s0o3rj7dc3t28t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

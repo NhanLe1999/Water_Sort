@@ -1,4 +1,7 @@
-﻿public enum ShowState
+﻿namespace WaterSort
 {
-    ShowAnimation, Show, HideAnimation, Hide
+    public enum ShowState
+    {
+        ShowAnimation, Show, HideAnimation, Hide
+    }
 }

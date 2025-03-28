@@ -1,84 +1,143 @@
-﻿using System.Collections;
+﻿using WaterSort;
+using Spine.Unity;
+using System;
+using Unity.Collections;
 using UnityEngine;
-
-public class Liquid : MonoBehaviour
+using DG.Tweening;
+namespace WaterSort
 {
-    [SerializeField] private int _groupId;
-    [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private SpriteRenderer _bottomRenderer;
-    [SerializeField] private float _bottomRendererSize;
-    [SerializeField] private float _unitSize;
-    [SerializeField] private Color[] _groupColors = new Color[0];
-
-    public Transform p1;
-    public Transform p2;
-
-
-    private float _value;
-
-    private bool _isBottomLiquid;
-    // [SerializeField] private bool _useSprites = true;
-
-    public int GroupId
+    public class Liquid : MonoBehaviour
     {
-        get => _groupId;
-        set
-        {
-            _groupId = value;
-            _renderer.color = _groupColors[value];
-            _bottomRenderer.color = _groupColors[value];
-        }
-    }
+        [SerializeField] private int _groupId;
+        [SerializeField] private SpriteRenderer _renderer;
+        [SerializeField] private float _unitSize;
+        private float _valueRenderer;
+        private int _valueReal;
 
-    public SpriteRenderer Renderer => _renderer;
-
-    public bool IsBottomLiquid
-    {
-        get => _isBottomLiquid;
-        set
+        private bool _isBottomLiquid;
+        [SerializeField] private SpriteRenderer _surfaceRenderer;
+        [SerializeField] private SpriteRenderer _surfaceDeepRenderer;
+        public int GroupId
         {
-            _isBottomLiquid = value;
-            Value = Value;
-        }
-    }
-
-    public float Value
-    {
-        set
-        {
-            //Debug.Log("Value :" + value);
-            if (IsBottomLiquid && value > 0.9)
+            get => _groupId;
+            set
             {
-                _bottomRenderer.gameObject.SetActive(true);
+                _groupId = value;
+                UpdateColor();
+            }
+        }
 
-               _renderer.transform.localPosition = _renderer.transform.localPosition.WithY(_bottomRendererSize);
-                _renderer.transform.localScale =
-                    _renderer.transform.localScale.WithY(_unitSize * value - _bottomRendererSize);
+        public SpriteRenderer Renderer => _renderer;
+
+        public bool IsBottomLiquid
+        {
+            get => _isBottomLiquid;
+            set
+            {
+                _isBottomLiquid = value;
+                ValueReal = ValueReal;
+            }
+        }
+
+        public float ValueRenderer
+        {
+            set
+            {
+                _surfaceRenderer.transform.localPosition = Vector3.down * 0.02f + new Vector3(0, 0, 1);
+                //_surfaceRenderer.transform.localScale = _surfaceRenderer.transform.localScale.WithY(_unitSize * value);
+                _surfaceRenderer.size = _surfaceRenderer.size.WithY(_unitSize * value / 2 + 0.1f);
+
+                _surfaceDeepRenderer.transform.localPosition = Vector3.down * 0.02f;
+                _surfaceDeepRenderer.transform.localScale = _surfaceDeepRenderer.transform.localScale.WithY(_unitSize * value);
+
+                _valueRenderer = value;
+            }
+
+            get => _valueRenderer;
+        }
+
+        public int ValueReal
+        {
+            set
+            {
+                _renderer.transform.localPosition = Vector3.zero;
+                _renderer.transform.localScale = _renderer.transform.localScale.WithY(_unitSize * value);
+                _valueReal = value;
+            }
+            get => _valueReal;
+        }
+
+        public void UpdateValueNotUpdateSuface(int value)
+        {
+            _valueReal += value;
+        }
+
+        public int ValueTarget { set; get; }
+
+
+        public float Size => ValueReal * _unitSize;
+
+        public float SizeRender => ValueRenderer * _unitSize;
+
+        public void UpdateColor()
+        {
+            Color tempColor;
+            if (GameConfig.BLIND_MODE)
+            {
+                tempColor = ResourceManager.Instance._blindColors[GroupId];
             }
             else
             {
-                _bottomRenderer.gameObject.SetActive(false);
-                _renderer.transform.localPosition = Vector3.zero;
-                _renderer.transform.localScale = _renderer.transform.localScale.WithY(_unitSize * value );
+                tempColor = ResourceManager.Instance._normalColors[GroupId];
             }
+            _renderer.color = tempColor;
+            _surfaceRenderer.color = tempColor;
+            _surfaceDeepRenderer.color = tempColor;
 
-            _value = value;
         }
 
-        get => _value;
-    }
 
-    public float Size => Value * _unitSize;
+        public void ActiveEffectFour(bool isActive, bool isReceiver)
+        {
+            _surfaceRenderer.transform.localScale = new Vector2(1, 2);
+            _surfaceRenderer.size = new Vector2(1.5f, 0);
+            _renderer.gameObject.SetActive(!isActive);
+            _surfaceRenderer.gameObject.SetActive(isActive && isReceiver);
+            _surfaceDeepRenderer.gameObject.SetActive(isActive && !isReceiver);
 
-    public void SetOrderLayerMask(int order)
-    {
-        _renderer.sortingOrder = order;
-        _bottomRenderer.sortingOrder = order;
+        }
+
+        public void EffectAffterFour(float time)
+        {
+            _surfaceRenderer.transform.DOLocalMoveY(-0.18f, time).SetEase(Ease.Linear);
+            _surfaceRenderer.transform.DOScaleX(5, time).SetEase(Ease.Linear);
+        }
+
+        public void sortingOrder(int idLayer)
+        {
+            _renderer.sortingOrder = idLayer;
+            _surfaceRenderer.sortingOrder = idLayer;
+            _surfaceDeepRenderer.sortingOrder = idLayer;
+        }
+        public void sortingLayerName(string nameLayer)
+        {
+            _renderer.sortingLayerName = nameLayer;
+            _surfaceRenderer.sortingLayerName = nameLayer;
+            _surfaceDeepRenderer.sortingLayerName = nameLayer;
+        }
+
+
+        public void SetValue(float _newValue, float _newSize)
+        {
+            this._unitSize = _newSize;
+            ValueReal = (int)_newValue;
+        }
+
+        public void SetUnitSize(float _newSize)
+        {
+            this._unitSize = _newSize;
+            ValueReal = ValueReal;
+        }
+
     }
-    private Quaternion initialRotation;
-    private void Start()
-    {
-        initialRotation = _renderer.transform.rotation;
-    }
-  
 }

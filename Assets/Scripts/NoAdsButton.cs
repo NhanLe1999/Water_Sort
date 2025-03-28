@@ -2,17 +2,19 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class NoAdsButton : MonoBehaviour, IPointerClickHandler
+namespace WaterSort
 {
-
-    private void Awake()
+    public class NoAdsButton : MonoBehaviour, IPointerClickHandler
     {
+
+        private void Awake()
+        {
 #if IN_APP
         gameObject.SetActive(ResourceManager.EnableAds);
 #else
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
 #endif
-    }
+        }
 #if IN_APP
     private void OnEnable()
     {
@@ -31,11 +33,12 @@ public class NoAdsButton : MonoBehaviour, IPointerClickHandler
         gameObject.SetActive(ResourceManager.EnableAds);
     }
 #endif
-    public void OnPointerClick(PointerEventData eventData)
-    {
+        public void OnPointerClick(PointerEventData eventData)
+        {
 #if IN_APP
         ResourceManager.PurchaseNoAds(success => { });
 #endif
-    }
+        }
 
+    }
 }
